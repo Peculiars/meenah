@@ -5,6 +5,9 @@ import { Footer } from './components/Footer'
 import { ScrollRestoration, createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider, useLocation } from "react-router-dom";
 import { Cart } from './pages/Cart';
 import { Product } from './components/Product';
+import { Registration } from './pages/Registration';
+import { Login } from './pages/Login';
+import { Sneakers } from './pages/Sneakers';
 
 function App() {
 
@@ -19,6 +22,23 @@ function App() {
     );
   };
 
+  const SignUpLayout = () => {
+    return (
+      <div>
+        <Registration/>
+      </div>
+    );
+  };
+
+  const SignInLayout = () => {
+    return (
+      <div>
+        <Login/>
+      </div>
+    );
+  };
+
+
   const router = createBrowserRouter([
     {
       path: '/',
@@ -27,6 +47,24 @@ function App() {
         {path: '/', element: <Home/>},
         {path: '/product/:id', element: <Product/>},
         {path: '/cart', element: <Cart/>},
+        {path: '/sneakers', element: <Sneakers/>},
+
+      ]
+    },
+
+    {
+      path: '/',
+      element: <SignUpLayout />,
+      children: [
+        {path: '/registration', element: <Registration/>},
+      ]
+    },
+
+    {
+      path: '/',
+      element: <SignInLayout />,
+      children: [
+        {path: '/login', element: <Login/>}
       ]
     }
   ])
