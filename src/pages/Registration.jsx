@@ -4,10 +4,25 @@ import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { db } from '../firebaseConfig';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
 
 
 export const Registration = () => {
-
+    const signInWithGoogle = async () => {
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
+        provider.setCustomParameters({ prompt: 'select_account' });
+        try {
+            await signInWithPopup(auth, provider).then((result)=>{
+                const user = result.user;
+                console.log(user)
+            }); // Use 'provider' directly here
+            } catch (error) {
+                alert(error.message);
+                }
+        };
     const [userName, setUserName]=useState("")
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("")
@@ -35,8 +50,17 @@ export const Registration = () => {
         setErrPassword("")
     }
 
-    const handleRegistration=(e)=>{
+    const handleRegistration= async(e)=>{
         e.preventDefault();
+
+        try {
+            const users = await createUserWithEmailAndPassword(db, email, password, userName)
+            if(users){
+                alert("Account created successfully")
+            }
+        } catch (error) {
+            alert(error)
+        }
         if(!userName){
             setErrUserName("Enter a username")
         }
@@ -61,12 +85,11 @@ export const Registration = () => {
             setPassword("")
             setUserName("")
         }
-
     }
   return (
     <div className='w-full h-screen bg-gray-200 pt-10'>
         <div className='bg-white max-w-screen-lg mx-auto h-[95%] grid lg:grid-cols-6 sm:grid-cols-1 shadow-md rounded-3xl'>
-           <form className='col-span-3 flex flex-col items-center justify-center'>
+           <form onSubmit={(e)=>handleRegistration(e)} className='col-span-3 flex flex-col items-center justify-center'>
                 <div className='w-[60%] flex flex-col justify-center'>
                     <div className='mb-6 w-full'>
                         <h1 className='font-titleFont font-extrabold text-3xl text-center'>SIGN UP</h1>
@@ -99,7 +122,7 @@ export const Registration = () => {
                     </div>
                     <button onClick={handleRegistration} type='submit' className=' bg-black text-white py-2'>Sign up</button>
                     <div className='flex flex-col justify-center gap-3 mt-5'>
-                        <button className='border-[1.5px] border-gray-500 mt-3 rounded-3xl flex items-center justify-center py-1'>
+                        <button onClick={signInWithGoogle} className='border-[1.5px] border-gray-500 mt-3 rounded-3xl flex items-center justify-center py-1'>
                             <img className='w-5' src={google} alt="" />
                             <span className='text-xs'>Sign up with Google</span>
                         </button>

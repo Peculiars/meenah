@@ -34,10 +34,13 @@ export const meenahSlice = createSlice({
         },
         resetCart:(state)=>{
             state.productData=[]
+        },
+        addUser: (state, action)=>{
+            state.userinfo = action.payload
         }
     
     }
 })
 
-export const { addToCart, incrementQuantity, decrementQuantity, deleteItem, resetCart} = meenahSlice.actions;
+export const { addToCart, incrementQuantity, decrementQuantity, deleteItem, resetCart, addUser} = meenahSlice.actions;
 export default meenahSlice.reducer;

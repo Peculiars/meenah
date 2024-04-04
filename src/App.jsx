@@ -8,6 +8,9 @@ import { Product } from './components/Product';
 import { Registration } from './pages/Registration';
 import { Login } from './pages/Login';
 import { Sneakers } from './pages/Sneakers';
+import { Boots } from './pages/Boots';
+import { FlatSlippers } from './pages/FlatSlippers';
+import { Sandals } from './pages/Sandals';
 
 function App() {
 
@@ -48,6 +51,9 @@ function App() {
         {path: '/product/:id', element: <Product/>},
         {path: '/cart', element: <Cart/>},
         {path: '/sneakers', element: <Sneakers/>},
+        {path: '/boots', element: <Boots/>},
+        {path: '/slippers', element: <FlatSlippers/>},
+        {path: '/sandals', element: <Sandals/>}
 
       ]
     },
