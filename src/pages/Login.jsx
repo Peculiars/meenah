@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {  google, facebook, login } from '../assets/images';
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { Link, useNavigate } from 'react-router-dom';
 import { db } from '../firebaseConfig';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithPopup} from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/meenahSlicer';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 export const Login = () => {
     const dispatch = useDispatch();
@@ -39,10 +41,22 @@ export const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value
         try {
-             const users = await signInWithEmailAndPassword(db, email, password)
-            if(users){
-                alert("Account created successfully")
-            }
+             await signInWithEmailAndPassword(db, email, password).then((result)=>{
+            const user = result.user;
+                dispatch(addUser({
+                    id: user.uid,
+                    name: user.displayName,
+                    email: user.email,
+                    image: user.photoURL
+                }))
+                setTimeout(()=>{
+                    navigate("/")
+                }, 1500)
+                if(user){
+                    toast.success("Welcome back!")
+                }
+            }); // Use 'provider' directly here
+            
         } catch (error) {
             alert(error)
         }
@@ -91,6 +105,17 @@ export const Login = () => {
                 <img className='w-80 h-80 object-cover rounded-tl-3xl rounded-br-3xl' src={login} alt="" />
             </div>
         </div>
+        <ToastContainer
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'/>
     </div>
   )
 }

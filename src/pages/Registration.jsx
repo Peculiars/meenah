@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { db } from '../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 export const Registration = () => {
@@ -56,7 +57,7 @@ export const Registration = () => {
         try {
             const users = await createUserWithEmailAndPassword(db, email, password, userName)
             if(users){
-                alert("Account created successfully")
+                toast.success("your account created successfully!")
             }
         } catch (error) {
             alert(error)
@@ -143,6 +144,17 @@ export const Registration = () => {
                 <img className='w-80 h-80 object-cover rounded-tr-3xl rounded-bl-3xl' src={registration} alt="" />
             </div>
         </div>
+        <ToastContainer
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'/>
     </div>
   )
 }

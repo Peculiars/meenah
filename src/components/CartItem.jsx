@@ -18,16 +18,16 @@ export const CartItem = () => {
         </div>
         <div>
             { productData.map((item)=>(
-                <div key={item.id} className='flex items-center justify-between gap-6 mt-6'>
+                <div key={item.id} className='flex items-center justify-between gap-8 mt-6'>
                     <div className='flex items-center'>
                         <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) & toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
-                        <img className='w-32 h-32 object-cover mx-5' src={item.image} alt="" />
+                        <img className='w-32 h-32 object-cover mx-2' src={item.image} alt="" />
                     </div>
-                    <div className=' w-40 flex items-center justify-between'>
-                        <h2 className='w-40 text-sm'>{item.name}</h2>
+                    <div className=' w-38 flex items-center justify-between'>
+                        <h2 className='w-38 text-sm'>{item.name}</h2>
                         <p className='w-10 text-sm flex items-center'><span><TbCurrencyNaira/></span>{item.price}</p>
                     </div>
-                    <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-3'>
+                    <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-2'>
                         <p className='text-sm'>Quantity</p>
                         <div className='flex items-center gap-4 text-sm font-semibold'>
                             <button onClick={()=> dispatch(decrementQuantity(item.id))}  className='border h-5 font-normal text-lg flex items-center justify-center px-2  hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black'>-</button>

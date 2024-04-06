@@ -4,10 +4,21 @@ import { shopping } from '../assets/images';
 import { CartItem } from '../components/CartItem';
 import { TbCurrencyNaira } from "react-icons/tb";
 import { HiArrowNarrowLeft } from "react-icons/hi";
+import { toast } from 'react-toastify';
 
 export const Cart = () => {
   const productData = useSelector((state)=>state.meenah.productData);
-  const [totalAmount, setTotalAmount] = useState(0)
+  const userinfo = useSelector((state)=> state.meenah.userinfo)
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [payNow, setPayNow] = useState(false)
+
+  const handleCheckout=()=>{
+    if(userinfo){
+      setPayNow(true)
+    }else{
+      toast.error("Please login to Checkout")
+    }
+  }
 
   useEffect(() => {
     if (productData) {
@@ -35,7 +46,7 @@ export const Cart = () => {
                 <p className='flex items-start gap-4 text-sm'>Shipping address <span>25, Ondo street, Apapa road, Oyingbo, Lagos state.</span></p>
               </div>
               <p className='font-titleFont font-semibold flex justify-between mt-6'>Total <span className='text-xl font-bold flex items-center'><TbCurrencyNaira/>{(totalAmount.toLocaleString())}</span></p>
-              <button className='bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'>proceed to checkout</button>
+              <button onClick={handleCheckout} className='bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-300'>proceed to checkout</button>
             </div>
           </>
         ): (
