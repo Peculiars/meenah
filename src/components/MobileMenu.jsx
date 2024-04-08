@@ -10,25 +10,13 @@ export const MobileMenu = () => {
 
     const ref = useRef();
 
-    useEffect(() => {
-      const handleClickOutside = (e) => {
-          if (ref.current && !ref.current.contains(e.target)) {
-              setIsMenuOpen(false);
-          }
-      };
-
-      document.addEventListener('click', handleClickOutside);
-
-      return () => {
-          document.removeEventListener('click', handleClickOutside);
-      };
-  }, []);
+    
   return (
     <div className='w-full relative'>
         <HiMenuAlt2 className='cursor-pointer w-7 h-7' onClick={()=> setIsMenuOpen(!isMenuOpen)}/>
         {isMenuOpen && (
-            <div ref={ref} className='w-[300px] h-[400px] absolute bg-white mt-10 right-0'>
-              <div>
+          <div className='bg-black bg-opacity-50 w-full h-screen fixed left-0 top-0'>
+              <div ref={ref} className='w-[300px] h-[400px] absolute bg-white mt-10 left-10 top-5'>
               <ul className='flex flex-col items-center gap-6 py-10'>
                 <li className='headerListItem'><Link to='/'>Home</Link></li>
                 <li  className='headerListItem'><Link to='/sneakers'>Sneakers</Link></li>
@@ -36,10 +24,10 @@ export const MobileMenu = () => {
                 <li  className='headerListItem'><Link to='/slippers'>Flat Slippers</Link></li>
                 <li  className='headerListItem'><Link to='/sandals'>Sandals</Link></li>
             </ul>
-              </div>
             
-            <span onClick={()=> setIsMenuOpen(!isMenuOpen)} className='absolute top-0 -left-14 bg-black p-4 text-white'><AiOutlineClose /></span>
+            <span onClick={()=> setIsMenuOpen(!isMenuOpen)} className='absolute -bottom-20 left-0 right-0 bg-black p-4 w-10 mx-auto text-white'><AiOutlineClose /></span>
             </div>
+          </div>
         )}
         
         </div>

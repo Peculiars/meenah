@@ -13,7 +13,7 @@ import { FaHome } from "react-icons/fa";
 export const Footer = () => {
   return (
     <div className='bg-black text-[#949494] py-20 font-titleFont'>
-        <div className='max-w-screen-lg mx-auto grid grid-cols-4'>
+        <div className='max-w-screen-lg mx-auto md:grid md:px-10 lg:px-0 sm:flex sm:flex-col sm:items-center sm:gap-10 md:grid-cols-2 lg:grid-cols-4'>
             <div className='flex flex-col gap-3'>
                 <img className='w-32' src={logoLight} alt="" />
                 <p>© Meenah Fashion Room inc.</p>

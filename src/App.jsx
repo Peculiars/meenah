@@ -11,6 +11,7 @@ import { Sneakers } from './pages/Sneakers';
 import { Boots } from './pages/Boots';
 import { FlatSlippers } from './pages/FlatSlippers';
 import { Sandals } from './pages/Sandals';
+import { PaystackCheckout } from './components/PaystackCheckout';
 
 function App() {
 
@@ -37,6 +38,14 @@ function App() {
     return (
       <div>
         <Login/>
+      </div>
+    );
+  };
+
+  const PaystackcheckoutLayout = () => {
+    return (
+      <div>
+        <PaystackCheckout/>
       </div>
     );
   };
@@ -71,6 +80,14 @@ function App() {
       element: <SignInLayout />,
       children: [
         {path: '/login', element: <Login/>}
+      ]
+    },
+
+    {
+      path: '/',
+      element: <PaystackcheckoutLayout />,
+      children: [
+        {path: '/paystack-checkout', element: <PaystackCheckout/>}
       ]
     }
   ])

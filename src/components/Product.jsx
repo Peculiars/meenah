@@ -19,14 +19,14 @@ export const Product = () => {
     const dispatch = useDispatch();
   return (
     <div>
-        <div className='max-w-screen-lg mx-auto my-10 flex gap-10'>
-            <div className='relative w-2/5'>
+        <div className='max-w-screen-lg mx-auto my-10 flex sm:flex-col gap-10'>
+            <div className='relative w-2/5 sm:w-full'>
                 <img className='w-full h-[450px] object-cover' src={`/${productDetails.image}`} alt="" />
                 <div className='absolute top-0 right-0'>
                     <p className='bg-black text-white font-semibold font-titleFont px-8 py-1'>{productDetails.category}</p>
                 </div>
             </div>
-            <div className='w-3/5 flex flex-col justify-center gap-12'>
+            <div className='w-3/5 flex sm:w-full sm:px-5 flex-col justify-center gap-12'>
                 <div>
                     <h2 className='text-4xl font-semibold'>{productDetails.name}</h2>
                     <p className='font-medium text-2xl flex items-center mt-3'><span><TbCurrencyNaira/></span> {productDetails.price}</p>

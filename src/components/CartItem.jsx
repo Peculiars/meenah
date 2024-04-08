@@ -12,21 +12,25 @@ export const CartItem = () => {
 
     const dispatch = useDispatch();
   return (
-    <div className='w-2/3 pr-10'>
+    <div className='md:w-2/3 sm:w-full pr-10'>
         <div className='w-full'>
             <h2 className='font-titleFont text-2xl'>shopping cart</h2>
         </div>
         <div>
             { productData.map((item)=>(
-                <div key={item.id} className='flex items-center justify-between gap-8 mt-6'>
+                <div key={item.id} className='flex items-center gap-8 mt-6'>
+                    <div className='flex-col flex'>
                     <div className='flex items-center'>
                         <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) & toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
                         <img className='w-32 h-32 object-cover mx-2' src={item.image} alt="" />
                     </div>
-                    <div className=' w-38 flex items-center justify-between'>
+                    <div className=' w-38 flex items-center justify-between gap-2'>
                         <h2 className='w-38 text-sm'>{item.name}</h2>
                         <p className='w-10 text-sm flex items-center'><span><TbCurrencyNaira/></span>{item.price}</p>
                     </div>
+                    </div>
+                    
+
                     <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-2'>
                         <p className='text-sm'>Quantity</p>
                         <div className='flex items-center gap-4 text-sm font-semibold'>

@@ -62,7 +62,7 @@ export const Header = () => {
                     </div>
 
 
-                {userinfo && <p className='font-titleFont font-semibold underline underline-offset-2 text-base'>{userinfo.name}</p>}
+                {userinfo && <p className='sm:hidden md:block font-titleFont font-semibold underline underline-offset-2 text-base'>{userinfo.name}</p>}
                 <div className='sm:block md:hidden'>
                 <MobileMenu/>
                 </div>

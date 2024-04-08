@@ -33,7 +33,7 @@ export const Sneakers = () => {
   }
 
   return (
-    <div className='grid grid-cols-4 max-w-screen-lg mx-auto gap-10 my-5'>
+    <div className='max-w-screen-lg mx-auto grid sm:grid-cols-1 sm:px-10 md:grid-cols-3 lg:grid-cols-4 gap-10 my-5'>
       {sneakersProducts.map(product => (
         <div key={product.id} className='group relative'>
           <div onClick={() => handleDetails(product)} className='w-full h-60 cursor-pointer overflow-hidden'>
