@@ -64,7 +64,7 @@ export const Login = () => {
     }
   return (
     <div className='w-full h-screen bg-gray-200 pt-10'>
-        <div className='bg-white max-w-screen-lg mx-auto h-[95%] grid grid-cols-6 shadow-md rounded-3xl'>
+        <div className='bg-white max-w-screen-lg mx-auto h-[95%] grid lg:grid-cols-6 sm:grid-cols-1 shadow-md rounded-3xl'>
            <form onSubmit={(e)=>handlelogin(e)} className='col-span-3 flex flex-col items-center justify-center'>
                 <div className='w-[60%] flex flex-col justify-center'>
                     <div className='mb-6 w-full'>
@@ -101,7 +101,7 @@ export const Login = () => {
                 </div>
                 
            </form>
-            <div className='col-span-3 bg-black flex items-center justify-center rounded-3xl'>
+            <div className='lg:col-span-3 sm:hidden lg:inline-flex col-span-3 bg-black flex items-center justify-center rounded-3xl'>
                 <img className='w-80 h-80 object-cover rounded-tl-3xl rounded-br-3xl' src={login} alt="" />
             </div>
         </div>
