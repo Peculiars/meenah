@@ -12,26 +12,26 @@ export const CartItem = () => {
 
     const dispatch = useDispatch();
   return (
-    <div className='md:w-2/3 sm:w-full pr-10'>
+    <div className='md:w-2/3 sm:w-full '>
         <div className='w-full'>
             <h2 className='font-titleFont text-2xl'>shopping cart</h2>
         </div>
         <div>
             { productData.map((item)=>(
-                <div key={item.id} className='flex items-center gap-8 mt-6'>
-                    <div className='flex-col flex'>
-                    <div className='flex items-center'>
-                        <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) & toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
-                        <img className='w-32 h-32 object-cover mx-2' src={item.image} alt="" />
-                    </div>
-                    <div className=' w-38 flex items-center justify-between gap-2'>
-                        <h2 className='w-38 text-sm'>{item.name}</h2>
-                        <p className='w-10 text-sm flex items-center'><span><TbCurrencyNaira/></span>{item.price}</p>
-                    </div>
+                <div key={item.id} className='grid md:grid-cols-3 sm:grid-cols-2 mt-6'>
+                    <div className=' col-span-1 mb-3'>
+                        <div className='flex items-center'>
+                            <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) & toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
+                            <img className='w-32 h-32 object-cover mx-2' src={item.image} alt="" />
+                        </div>
+                        <div className='flex md:flex-row sm:flex-col mt-3 items-center md:justify-around sm:justify-center'>
+                            <h2 className='text-sm'>{item.name}</h2>
+                            <p className='text-sm flex items-center'><span><TbCurrencyNaira/></span>{item.price}</p>
+                        </div>
                     </div>
                     
-
-                    <div className='w-52 flex items-center justify-between text-gray-500 gap-4 border p-2'>
+                    <div className=' md:col-span-2 sm:col-span-1 flex md:flex-row sm:flex-col items-center md:justify-evenly sm:justify-center md:gap-3 sm:gap-0'>
+                    <div className='flex items-center justify-between text-gray-500 gap-4 border p-2'>
                         <p className='text-sm'>Quantity</p>
                         <div className='flex items-center gap-4 text-sm font-semibold'>
                             <button onClick={()=> dispatch(decrementQuantity(item.id))}  className='border h-5 font-normal text-lg flex items-center justify-center px-2  hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black'>-</button>
@@ -39,7 +39,8 @@ export const CartItem = () => {
                             <button onClick={()=> dispatch(incrementQuantity(item.id))} className='border h-5 font-normal text-lg flex items-center justify-center px-2  hover:bg-gray-700 hover:text-white cursor-pointer duration-300 active:bg-black'>+</button>
                         </div>
                     </div>
-                    <p className='flex items-center w-14 text-sm'><span><TbCurrencyNaira/></span>{parseInt(item.price.replace(",", "") * item.quantity).toLocaleString()}</p>
+                    <p className='flex items-center w-14 text-sm mt-3'><span><TbCurrencyNaira/></span>{parseInt(item.price.replace(",", "") * item.quantity).toLocaleString()}</p>
+                    </div>
                 </div>
             ))}
         </div>

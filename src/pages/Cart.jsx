@@ -4,7 +4,7 @@ import { shopping } from '../assets/images';
 import { CartItem } from '../components/CartItem';
 import { TbCurrencyNaira } from "react-icons/tb";
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { PaystackCheckout } from '../components/PaystackCheckout';
 import { Link } from 'react-router-dom';
 
@@ -45,7 +45,7 @@ export const Cart = () => {
         { productData.length > 0 ? (
           <>
             <CartItem/>
-            <div className='md:w-1/3 sm:w-full bg-[#fafafa] py-6 px-4 relative'>
+            <div className='md:w-1/3 sm:w-full my-7 bg-[#fafafa] py-6 px-4 relative'>
               <div className='flex flex-col gap-6 border-b-[1px] border-b-gray-400 pb-6'>
                 <h2 className='text-2xl font-medium'>Cart total</h2>
                 <p className='flex items-center gap-4 text-base'>Subtotal <span className='font-titleFont font-bold text-lg flex items-center'><TbCurrencyNaira/>{(totalAmnt)}</span></p>
@@ -70,6 +70,17 @@ export const Cart = () => {
           </div>
         )}
       </div>
+      <ToastContainer
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'/>
     </div>
   )
 }

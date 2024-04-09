@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
     productData:[],
-    userinfo: []
+    userinfo: [],
+    
 };
 
 export const meenahSlice = createSlice({
