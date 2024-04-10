@@ -8,9 +8,10 @@ import { db } from '../firebaseConfig';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
-
+import { useNavigate } from 'react-router-dom';
 
 export const Registration = () => {
+    const navigate = useNavigate();
     const signInWithGoogle = async () => {
         const auth = getAuth();
         const provider = new GoogleAuthProvider(); // Use 'GoogleAuthProvider' directly
@@ -59,6 +60,9 @@ export const Registration = () => {
             if(users){
                 toast.success("your account created successfully!")
             }
+            setTimeout(()=>{
+                navigate("/")
+            }, 1500)
         } catch (error) {
             alert(error)
         }

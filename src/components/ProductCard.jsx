@@ -38,13 +38,14 @@ export const ProductCard = ({product}) => {
             price: product.price,
             quantity: 1,
             description: product.description,
-          })) & toast.success(`${product.name} is added to cart`)} className='absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 left-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 text-xs'>add to cart <span><HiOutlineArrowSmRight /></span></p>
+          }))&& toast.success(`${product.name} is added to cart`) } 
+          className='absolute z-20 w-[100px] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 left-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 text-xs'>add to cart <span><HiOutlineArrowSmRight /></span></p>
         </div>
       </div>
       <div className='absolute top-0 right-0'>
         <p className='bg-black text-white font-semibold font-titleFont px-6 py-1'>{product.category}</p>
       </div>
-      <ToastContainer
+      <ToastContainer containerId='productCard'
         position='top-left'
         autoClose={2000}
         hideProgressBar={false}

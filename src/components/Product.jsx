@@ -60,7 +60,7 @@ export const Product = () => {
                 </div>
             </div>
         </div>
-        <ToastContainer
+        <ToastContainer containerId={productDetails.name}
         position='top-left'
         autoClose={2000}
         hideProgressBar={false}

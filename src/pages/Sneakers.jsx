@@ -55,7 +55,7 @@ export const Sneakers = () => {
           </div>
         </div>
       ))}
-      <ToastContainer
+      <ToastContainer containerId='sneakers'
         position='top-left'
         autoClose={2000}
         hideProgressBar={false}

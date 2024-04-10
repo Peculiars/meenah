@@ -55,7 +55,7 @@ export const FlatSlippers = () => {
           </div>
         </div>
       ))}
-      <ToastContainer
+      <ToastContainer containerId='slippers'
         position='top-left'
         autoClose={2000}
         hideProgressBar={false}

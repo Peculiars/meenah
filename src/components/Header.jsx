@@ -36,11 +36,16 @@ export const Header = () => {
     return (
         <div className='w-full h-20 bg-white border border-b-gray-800 font-titleFont sticky top-0 z-50'>
             <div className='sm:w-full sm:px-5 md:max-w-screen-lg h-full mx-auto flex items-center justify-between'>
+                <div className='flex gap-2'>
+                <div className='sm:block md:hidden'>
+                    <MobileMenu />
+                </div>
                 <Link to='/'>
                     <div>
                         <img className='w-28' src={logoDark} alt="Meenah logo" />
                     </div>
                 </Link>
+                </div>
                 <div className='flex items-center gap-8'>
                     <ul className='flex item-center gap-8 sm:hidden md:inline-flex'>
                         <li className='headerListItem'><Link to='/'>Home</Link></li>
@@ -61,9 +66,7 @@ export const Header = () => {
                         )}
                     </div>
                     {userinfo && <p className='sm:hidden lg:block font-titleFont font-semibold underline underline-offset-2 text-base'>{userinfo.name}</p>}
-                    <div className='sm:block md:hidden'>
-                        <MobileMenu />
-                    </div>
+                    
                 </div>
             </div>
             <ToastContainer
