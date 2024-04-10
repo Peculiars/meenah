@@ -60,13 +60,20 @@ export const Header = () => {
                         </div>
                     </Link>
                     <div className='relative'>
-                        <img onClick={() => setShowSignOut(!showSignOut)} className='w-8 h-8 rounded-full cursor-pointer' src={userinfo ? userinfo.image : 'https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?b=1&s=612x612&w=0&k=20&c=MsKXmwf7TDRdKRn_lHohhmD5rvVvnGs9ry0xl6CrMT4='} alt="" />
-                        {showSignOut && (
-                            <button onClick={handleLogout} className='absolute top-10 right-0 bg-white border border-gray-300 py-1 px-3 rounded-md'>Logout</button>
+                        {userinfo ? (
+                            <>
+                                <img onClick={() => setShowSignOut(!showSignOut)} className='w-8 h-8 rounded-full cursor-pointer' src={userinfo.image} alt="" />
+                                {showSignOut && (
+                                    <button onClick={handleLogout} className='absolute top-10 right-0 bg-white border border-gray-300 py-1 px-3 rounded-md'>Sign Out</button>
+                                )}
+                                <p className='sm:hidden lg:block font-titleFont font-semibold underline underline-offset-2 text-base'>{userinfo.name}</p>
+                            </>
+                        ) : (
+                            <Link to="/login">
+                                <button className='bg-white border border-gray-300 py-1 px-3 rounded-md'>Login</button>
+                            </Link>
                         )}
                     </div>
-                    {userinfo && <p className='sm:hidden lg:block font-titleFont font-semibold underline underline-offset-2 text-base'>{userinfo.name}</p>}
-                    
                 </div>
             </div>
             <ToastContainer

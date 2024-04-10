@@ -48,7 +48,7 @@ export const CartItem = () => {
         <Link to='/'>
             <button className='mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'> <span><HiArrowNarrowLeft /></span>go shopping</button>
         </Link>
-        <ToastContainer
+        <ToastContainer containerId='removeItem'
         position='top-left'
         autoClose={2000}
         hideProgressBar={false}

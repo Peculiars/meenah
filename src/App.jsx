@@ -26,31 +26,6 @@ function App() {
     );
   };
 
-  const SignUpLayout = () => {
-    return (
-      <div>
-        <Registration/>
-      </div>
-    );
-  };
-
-  const SignInLayout = () => {
-    return (
-      <div>
-        <Login/>
-      </div>
-    );
-  };
-
-  const PaystackcheckoutLayout = () => {
-    return (
-      <div>
-        <PaystackCheckout/>
-      </div>
-    );
-  };
-
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -66,30 +41,10 @@ function App() {
 
       ]
     },
-
-    {
-      path: '/',
-      element: <SignUpLayout />,
-      children: [
-        {path: '/registration', element: <Registration/>},
-      ]
-    },
-
-    {
-      path: '/',
-      element: <SignInLayout />,
-      children: [
-        {path: '/login', element: <Login/>}
-      ]
-    },
-
-    {
-      path: '/',
-      element: <PaystackcheckoutLayout />,
-      children: [
-        {path: '/paystack-checkout', element: <PaystackCheckout/>}
-      ]
-    }
+    {path: '/login', element: <Login/>},
+    {path: '/registration', element: <Registration/>},
+    {path: '/paystack-checkout', element: <PaystackCheckout/>}
+    
   ])
 
   return (
