@@ -21,7 +21,7 @@ export const CartItem = () => {
                 <div key={item.id} className='grid md:grid-cols-3 sm:grid-cols-2 mt-6'>
                     <div className=' col-span-1 mb-3'>
                         <div className='flex items-center'>
-                            <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) & toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
+                            <p><IoCloseOutline onClick={()=> dispatch(deleteItem(item.id)) && toast.error(`${item.name} is removed`)} className='text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300'/></p>
                             <img className='w-32 h-32 object-cover mx-2' src={item.image} alt="" />
                         </div>
                         <div className='flex md:flex-row sm:flex-col mt-3 items-center md:justify-around sm:justify-center'>
@@ -44,7 +44,7 @@ export const CartItem = () => {
                 </div>
             ))}
         </div>
-        <button onClick={()=> dispatch(resetCart())& toast.error(`Your Cart is Empty!`)} className='bg-red-500 text-white mt-8 ml-7 py-1 px-6 hover:bg-red-800 duration-300'>Reset Cart</button>
+        <button onClick={()=> dispatch(resetCart())&& toast.error(`Your Cart is Empty!`)} className='bg-red-500 text-white mt-8 ml-7 py-1 px-6 hover:bg-red-800 duration-300'>Reset Cart</button>
         <Link to='/'>
             <button className='mt-8 ml-7 flex items-center gap-1 text-gray-400 hover:text-black duration-300'> <span><HiArrowNarrowLeft /></span>go shopping</button>
         </Link>
